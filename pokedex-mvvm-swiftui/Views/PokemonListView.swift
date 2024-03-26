@@ -15,12 +15,13 @@ struct PokemonListView: View {
 
     var body: some View {
         NavigationView {
-                List(viewModel.pokemonList) { pokemon in
-                    NavigationLink(destination: PokemonDetailsView( viewModel: PokemonDetailsViewModel(pokemon: pokemon))) {
-                        Text(pokemon.name.capitalized)
-                    }
+            List(viewModel.pokemonList) { pokemon in
+                NavigationLink(destination: PokemonDetailsView(
+                            viewModel: PokemonDetailsViewModel(pokemon: pokemon, bookmarkManager: bookmarkManager))) {
+                    Text(pokemon.name.capitalized)
                 }
-                .navigationTitle("Pokemon List")
             }
+            .navigationTitle("Pokemon List")
         }
+    }
 }

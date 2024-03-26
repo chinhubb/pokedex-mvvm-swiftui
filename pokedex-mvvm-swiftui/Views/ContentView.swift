@@ -19,7 +19,7 @@ struct ContentView: View {
                 }
             
             NavigationView {
-                BookmarkedPokemonListView()
+                BookmarkedPokemonListView(bookmarkManager: bookmarkManager)
             }
             .tabItem { 
                 BookmarkedListTabItem()
