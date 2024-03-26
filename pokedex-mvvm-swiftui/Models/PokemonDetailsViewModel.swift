@@ -9,6 +9,7 @@ import Foundation
 
 class PokemonDetailsViewModel: ObservableObject {
     @Published var pokemon: Pokemon
+    @Published var isBookmarked: Bool = false
 
     init(pokemon: Pokemon) {
         self.pokemon = pokemon

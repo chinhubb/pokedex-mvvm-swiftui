@@ -27,5 +27,12 @@ struct PokemonDetailsView: View {
         }
         .navigationTitle(viewModel.pokemon.name.capitalized)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing:
+            Button(viewModel.isBookmarked ? "Unbookmark" : "Bookmark") {
+                viewModel.isBookmarked.toggle()
+                UserDefaults.standard.set(viewModel.isBookmarked, forKey: "isBookmarked-\(viewModel.pokemon.id)")
+                // Update UI on saved
+            }
+        )
     }
 }
