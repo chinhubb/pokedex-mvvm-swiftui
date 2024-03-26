@@ -20,7 +20,7 @@ class APIService: APIServiceProtocol {
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: PokemonListResults.self, decoder: JSONDecoder()) // Assuming you have this struct
+            .decode(type: PokemonListResults.self, decoder: JSONDecoder())
             .flatMap { results -> Publishers.Collect<Publishers.FlatMap<AnyPublisher<Pokemon, Error>, Publishers.SetFailureType<Publishers.Sequence<[PokemonListItem], Never>, Error>>> in
                 results.results.publisher
                     .flatMap { item -> AnyPublisher<Pokemon, Error> in

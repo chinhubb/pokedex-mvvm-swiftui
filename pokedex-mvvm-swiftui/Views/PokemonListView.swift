@@ -13,16 +13,15 @@ struct PokemonListView: View {
     @ObservedObject var viewModel = PokemonListViewModel()
 
     var body: some View {
-       List {
-           ForEach(viewModel.pokemonList) { pokemon in
-               PokemonRow(pokemon: pokemon)
-           }
-       }
-       .overlay(
-           ProgressView()
-               .opacity(viewModel.isLoading ? 1 : 0)
-       )
-    }
+        NavigationView {
+                List(viewModel.pokemonList) { pokemon in
+                    NavigationLink(destination: PokemonDetailsView( viewModel: PokemonDetailsViewModel(pokemon: pokemon))) {
+                        Text(pokemon.name.capitalized)
+                    }
+                }
+                .navigationTitle("Pokemon List")
+            }
+        }
 }
 
 struct PokemonRow: View {

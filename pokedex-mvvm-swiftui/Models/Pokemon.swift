@@ -8,23 +8,22 @@
 import Foundation
 
 struct Pokemon: Decodable, Identifiable {
-    let id = UUID()
+    let id: Int
     let name: String
-    let sprites: Sprites
-    let types: [PokemonType]
-}
+    let imageUrl: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, sprites
+        case front_default
+    }
 
-struct Sprites: Decodable {
-    let frontDefault: String?
-}
+    // Update init from decoder for nested structure
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
 
-struct PokemonType: Decodable {
-    let slot: Int
-    let type: NamedAPIResource
+        let spritesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .sprites)
+        imageUrl = try spritesContainer.decode(String.self, forKey: .front_default)
+    }
 }
-
-struct NamedAPIResource: Decodable {
-    let name: String
-    let url: String
-}
-
