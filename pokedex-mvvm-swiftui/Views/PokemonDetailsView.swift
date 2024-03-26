@@ -32,49 +32,38 @@ struct PokemonDetailsView: View {
                 
                 HStack {
                     Text("Attack:")
-                    //                        Text("\(viewModel.pokemon.attack)")
-                    //                            .bold()
+                    Text("\(viewModel.pokemon.attack)")
+                        .bold()
                 }
                 
                 HStack {
                     Text("Defense:")
-                    //                        Text("\(viewModel.pokemon.defense)")
-                    //                            .bold()
+                    Text("\(viewModel.pokemon.defense)")
+                        .bold()
                 }
                 
                 HStack {
                     Text("Special Attack:")
-                    //                        Text("\(viewModel.pokemon.specialAttack)")
-                    //                            .bold()
+                    Text("\(viewModel.pokemon.specialAttack)")
+                        .bold()
                 }
                 
                 HStack {
                     Text("Special Defense:")
-                    //                        Text("\(viewModel.pokemon.specialDefense)")
-                    //                            .bold()
+                    Text("\(viewModel.pokemon.specialDefense)")
+                        .bold()
                 }
                 
                 HStack {
                     Text("Speed:")
-                    //                        Text("\(viewModel.pokemon.speed)")
-                    //                            .bold()
+                    Text("\(viewModel.pokemon.speed)")
+                        .bold()
                 }
-                
-                Text("Abilities:")
-                //                    ForEach(viewModel.pokemon.abilities, id: \.name) { ability in
-                //                        Text(ability.name.capitalized)
-                //                    }
-                
-                //                    if viewModel.isLoading {
-                //                        ProgressView()
-                //                    } else if let error = viewModel.error {
-                //                        Text("Error: \(error.localizedDescription)")
-                //                    }
             }
         }
         .onAppear {
-                  viewModel.getPokemonStats()
-              }
+            viewModel.getPokemonStats()
+        }
         .navigationTitle(viewModel.pokemon.name.capitalized)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:

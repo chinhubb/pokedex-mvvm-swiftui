@@ -61,8 +61,7 @@ class PokemonDetailsViewModel: ObservableObject {
                     break
                 }
             }, receiveValue: { [weak self] updatedPokemon in
-                self?.pokemon.stats = updatedPokemon.stats
-                print("sdfsf",self?.pokemon.hp)
+                self?.pokemon = updatedPokemon
             })
             .store(in: &subscriptions)
     }
