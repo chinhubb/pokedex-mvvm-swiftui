@@ -9,8 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = PokemonListViewModel()
-
+    @StateObject var bookmarkManager = BookmarkManager()
+    
     var body: some View {
-        PokemonListView()
+        TabView {
+            PokemonListView(viewModel: viewModel, bookmarkManager: bookmarkManager)
+                .tabItem {
+                    PokemonListTabItem()
+                }
+            
+            NavigationView {
+                BookmarkedPokemonListView()
+            }
+            .tabItem { 
+                BookmarkedListTabItem()
+            }
+        }
     }
 }

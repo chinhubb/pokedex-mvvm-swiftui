@@ -11,6 +11,7 @@ import SwiftUI
 
 struct PokemonListView: View {
     @ObservedObject var viewModel = PokemonListViewModel()
+    @StateObject var bookmarkManager = BookmarkManager()
 
     var body: some View {
         NavigationView {
@@ -22,12 +23,4 @@ struct PokemonListView: View {
                 .navigationTitle("Pokemon List")
             }
         }
-}
-
-struct PokemonRow: View {
-    let pokemon: Pokemon
-    
-    var body: some View {
-        Text("\(pokemon.name)")
-    }
 }
